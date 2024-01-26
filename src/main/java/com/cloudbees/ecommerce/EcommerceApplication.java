@@ -1,4 +1,4 @@
-package com.codebees.librasync;
+package com.cloudbees.ecommerce;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,16 +14,16 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @SpringBootApplication
 @EnableSwagger2
 @EnableWebMvc
-public class LibraSyncApplication {
+public class EcommerceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(LibraSyncApplication.class, args);
+		SpringApplication.run(EcommerceApplication.class, args);
 	}
 	
 	@Bean
 	public Docket apis()
 	{
-		return new Docket(DocumentationType.SWAGGER_2).select().apis(RequestHandlerSelectors.basePackage("com.codebees")).paths(PathSelectors.any()).build();
+		return new Docket(DocumentationType.SWAGGER_2).select().apis(RequestHandlerSelectors.basePackage("com.cloudbees")).paths(PathSelectors.any()).build();
 	} 
 
 }

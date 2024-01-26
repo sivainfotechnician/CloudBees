@@ -1,10 +1,10 @@
-package com.codebees.librasync;
+package com.cloudbees.ecommerce.test;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class LibraSyncApplicationTests {
+class EcommerceApplicationTests {
 
 	@Test
 	void contextLoads() {
