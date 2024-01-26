@@ -18,13 +18,10 @@ public class UpdateRequestDTO
 {
 	@NotBlank(message =Constants.ID_VALIDATION)
 	private String id;
-	@DecimalMin(value = "1", inclusive = true, message = Constants.MIN_VALIDATION)
-    @DecimalMax(value = "1.7976931348623157E308", inclusive = true, message = Constants.MAX_VALIDATION)
-	private double price;
-	@NotBlank(message ="oops! Need to select 'Discount or Tax' for calculation")
+	@NotBlank(message = Constants.SELECT_TYPE_MESSAGE)
 	private String discountOrTax;
 	@DecimalMin(value = "1", inclusive = true, message = Constants.MIN_VALIDATION)
-    @DecimalMax(value = "1.7976931348623157E308", inclusive = true, message = Constants.MAX_VALIDATION)
+    @DecimalMax(value = "100", inclusive = true, message = Constants.MAX_VALIDATION_FOR_PERCENT)
 	private double appliedPercent;
 	
 	
