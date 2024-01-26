@@ -8,11 +8,11 @@
 		<version>2.7.5</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.codebees.librasync</groupId>
-	<artifactId>librasync</artifactId>
+	<groupId>com.cloudbees.ecommerce</groupId>
+	<artifactId>ecommerce</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>LibraSync</name>
-	<description>Demo project for Spring Boot</description>
+	<name>ecommerce</name>
+	<description>Project For CloudBees Interview Process</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
@@ -100,16 +100,6 @@
     <artifactId>javax.servlet-api</artifactId>
     <version>4.0.1</version>
     <scope>provided</scope>
-</dependency>
-<dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-cache</artifactId>
-    <version>3.2.2</version>
-</dependency>
-<dependency>
-    <groupId>net.sf.ehcache</groupId>
-    <artifactId>ehcache</artifactId>
-    <version>2.10.9.2</version>
 </dependency>
 	</dependencies>
 
