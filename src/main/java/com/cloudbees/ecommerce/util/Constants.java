@@ -20,7 +20,7 @@ public class Constants {
 	public static final String DATA_INTEGRITY_VIOLATION_ERROR ="Data integrity violation occurred";
 	public static final String INVALID_TYPE_MESSAGE ="Invalid value ; must be 'Discount' or 'Tax'";
 	public static final String INVALID_NAME_PATTERN ="Invalid value; must contain only alphabets and numbers";
-	public static final String REGEX_PATTERN ="^[a-zA-Z0-9]+$";
+	public static final String REGEX_PATTERN ="^[a-zA-Z0-9 ]+$";
 
 	
 }

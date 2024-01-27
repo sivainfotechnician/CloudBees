@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ComputeRequestDTO
+public class ProductComputeRequestDTO
 {
 	@NotBlank(message =Constants.ID_VALIDATION)
 	private String id;

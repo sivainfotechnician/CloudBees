@@ -2,8 +2,6 @@ package com.cloudbees.ecommerce.service;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.sql.Timestamp;
-import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -12,18 +10,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.fasterxml.jackson.core.JsonParseException;
-import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.CachePut;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import com.cloudbees.ecommerce.dao.ProductRepository;
-import com.cloudbees.ecommerce.dto.CreateRequestDTO;
-import com.cloudbees.ecommerce.dto.UpdateRequestDTO;
-import com.cloudbees.ecommerce.dto.UpdateResponseDTO;
-import com.cloudbees.ecommerce.dto.ComputeRequestDTO;
+import com.cloudbees.ecommerce.dto.ProductCreateRequestDTO;
+import com.cloudbees.ecommerce.dto.ProductUpdateRequestDTO;
+import com.cloudbees.ecommerce.dto.ProductUpdateResponseDTO;
+import com.cloudbees.ecommerce.dto.ProductComputeRequestDTO;
 import com.cloudbees.ecommerce.model.Product;
 import com.cloudbees.ecommerce.util.Constants;
 
@@ -39,7 +34,7 @@ public class ProductService {
 	@Autowired
 	private ProductRepository productRepository;
 	
-	public ResponseEntity<?> create(CreateRequestDTO request) throws DataAccessException,JsonParseException,Exception
+	public ResponseEntity<?> create(ProductCreateRequestDTO request) throws DataAccessException,JsonParseException,Exception
 	{
 		logger.info("Enter into create service");
 		 try {
@@ -120,7 +115,7 @@ public class ProductService {
 		
 	}
 	
-	public ResponseEntity<?>  update(UpdateRequestDTO request)  throws IllegalArgumentException,DataIntegrityViolationException,JsonParseException,Exception
+	public ResponseEntity<?>  update(ProductUpdateRequestDTO request)  throws IllegalArgumentException,DataIntegrityViolationException,JsonParseException,Exception
 	{
 		logger.info("Enter into update service"+request);
 		try 
@@ -149,7 +144,7 @@ public class ProductService {
 
 	}
 	
-	public ResponseEntity<?> calculateAndUpdatePrice(ComputeRequestDTO request) throws IllegalArgumentException,DataIntegrityViolationException,JsonParseException,Exception
+	public ResponseEntity<?> calculatePrice(ProductComputeRequestDTO request) throws IllegalArgumentException,DataIntegrityViolationException,JsonParseException,Exception
 	{
 		logger.info("Enter into calculateAndUpdatePrice"+request);
 		BigDecimal updatedPrice = BigDecimal.ZERO;
@@ -178,7 +173,7 @@ public class ProductService {
                 }
                 productExistingDetail.setPrice(updatedPrice.setScale(2, RoundingMode.HALF_UP));
                 
-                UpdateResponseDTO response = new UpdateResponseDTO(Constants.SUCCESS_MESSAGE, productExistingDetail);
+                ProductUpdateResponseDTO response = new ProductUpdateResponseDTO(Constants.SUCCESS_MESSAGE, productExistingDetail);
                 return new ResponseEntity<>(response, HttpStatus.OK);
 
             } 

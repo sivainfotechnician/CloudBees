@@ -19,9 +19,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cloudbees.ecommerce.dto.CreateRequestDTO;
-import com.cloudbees.ecommerce.dto.UpdateRequestDTO;
-import com.cloudbees.ecommerce.dto.ComputeRequestDTO;
+import com.cloudbees.ecommerce.dto.ProductCreateRequestDTO;
+import com.cloudbees.ecommerce.dto.ProductUpdateRequestDTO;
+import com.cloudbees.ecommerce.dto.ProductComputeRequestDTO;
 import com.cloudbees.ecommerce.service.ProductService;
 
 
@@ -35,31 +35,31 @@ public class ProductController
 	@Autowired
 	private ProductService productService;
 	
-	@PostMapping("/product/create")
-    public ResponseEntity<?> create(@RequestBody @Valid CreateRequestDTO request) throws DataAccessException,JsonParseException, Exception
+	@PostMapping("/product")
+    public ResponseEntity<?> create(@RequestBody @Valid ProductCreateRequestDTO request) throws DataAccessException,JsonParseException, Exception
 	{
 		logger.info("Enter into create  controller"+request);
 		return productService.create(request);
 			
     }
 	
-	@PutMapping("/product/update") 
-    public ResponseEntity<?> update(@RequestBody @Valid UpdateRequestDTO request) throws DataIntegrityViolationException, IllegalArgumentException,JsonParseException, Exception 
+	@PutMapping("/product") 
+    public ResponseEntity<?> update(@RequestBody @Valid ProductUpdateRequestDTO request) throws DataIntegrityViolationException, IllegalArgumentException,JsonParseException, Exception 
 	{
 		logger.info("Enter into update  controller"+request);
 		return productService.update(request);
 			
     }
 	
-	@PutMapping("/product/calculateandupdate") 
-    public ResponseEntity<?> calculateAndUpdatePrice(@RequestBody @Valid ComputeRequestDTO request) throws DataIntegrityViolationException, IllegalArgumentException,JsonParseException, Exception 
+	@PostMapping("/product/calculatePrice") 
+    public ResponseEntity<?> calculatePrice(@RequestBody @Valid ProductComputeRequestDTO request) throws DataIntegrityViolationException, IllegalArgumentException,JsonParseException, Exception 
 	{
 		logger.info("Enter into update  controller"+request);
-		return productService.calculateAndUpdatePrice(request);
+		return productService.calculatePrice(request);
 			
     }
 	
-	@GetMapping("/product/getById/{id}") 
+	@GetMapping("/product/{id}") 
     public ResponseEntity<?> getById(@PathVariable String id) throws Exception 
 	{
 		logger.info("Enter into get  controller"+id);
@@ -67,7 +67,7 @@ public class ProductController
 			
     }
 	
-	@GetMapping("/product/getAll")
+	@GetMapping("/product")
     public ResponseEntity<?> getAll() throws DataAccessException, Exception
 	{
 		logger.info("Enter into getAll  controller");
@@ -75,7 +75,7 @@ public class ProductController
 			
     }
 	
-	@DeleteMapping("/product/deleteById/{id}") 
+	@DeleteMapping("/product/{id}") 
     public ResponseEntity<?> delete(@PathVariable String id) throws Exception 
 	{
 		logger.info("Enter into delete  controller");

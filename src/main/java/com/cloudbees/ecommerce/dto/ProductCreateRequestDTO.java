@@ -20,13 +20,12 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UpdateRequestDTO
+public class ProductCreateRequestDTO
 {
-	@NotBlank(message =Constants.ID_VALIDATION)
-	private String id;
+
 	
+	@NotBlank(message = Constants.NAME_VALIDATION)
 	@AlphaNumeric
-	@NotBlank(message =Constants.NAME_VALIDATION)
 	private String name;
 	
 	private String description;
@@ -38,7 +37,7 @@ public class UpdateRequestDTO
 	@NotNull(message = Constants.PRICE_VALIDATION)
 	@DecimalMin(value = "1", inclusive = true, message = Constants.MIN_VALIDATION)
     @DecimalMax(value = "1.7976931348623157E308", inclusive = true, message = Constants.MAX_VALIDATION)
-	private BigDecimal price;
+	private BigDecimal  price;
 	
 	
 }
